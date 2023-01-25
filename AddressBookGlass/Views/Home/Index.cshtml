@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_LayoutNoGlass";
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="d-flex align-items-center">
+    <div class="row mt-5">
+        <div class="col-12 col-md-6 order-last order-md-first">
+            <h1 class="display-5 fw-bold">Personal AddressBook</h1>
+            <p class="mt-1 fw-bold">
+                A simple personal addressbook used to keep all your contacts in one easy to use
+                and secure location!
+            </p>
+            <form>
+                <button class="btn btn-lg btn-primary" type="submit" value="Demo">Demo</button>
+            </form>
+            <div class="mt-1">
+                <h5>Built with ASP.NET Core, C#, .NET 6, MVC, BootStrap 5, and Postgres SQL</h5>
+                <h5>Hosted with Heroku, CI/CD with Github</h5>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 order-first order-md-last">
+            <img src="Img/Plaeholder-addressbook.png" class="img-fluid" />
+        </div>
+    </div>
+</div>

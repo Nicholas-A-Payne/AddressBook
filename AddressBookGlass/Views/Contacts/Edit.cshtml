@@ -1,0 +1,99 @@
+﻿@model AddressBookGlass.Models.Contact
+@using AddressBookGlass.Services.Interfaces
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div>
+
+    <!--Address Card-->
+    <div class="glass-np-style darkGlass p-2">
+        <form asp-action="Edit" asp-controller="Contacts" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserId" />
+            <input type="hidden" asp-for="Created" />
+            <input type="hidden" asp-for="Id" />
+
+
+            <div class="row" gy-2>
+                <div class="col-12 col-md-6">
+                    <label asp-for="FirstName" class="form-label">First Name</label>
+                    <input asp-for="FirstName" type="text" class="form-control" id="FirstName" value="@Model.FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label asp-for="LastName" class="form-label">Last Name</label>
+                    <input asp-for="LastName" type="text" class="form-control" id="LastName" value="@Model.LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="email"  class="form-control" id="Email" value="@Model.Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="tel"  class="form-control" id="PhoneNumber" value="@Model.PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="col-12 ">
+                    <label asp-for="AddressOne" class="form-label">Address</label>
+                    <input asp-for="AddressOne" type="text" class="form-control" id="AddressOne" value="@Model.AddressOne" />
+                    <span asp-validation-for="AddressOne" class="text-danger"></span>
+                </div>
+                <div class="col-12 ">
+                    <label asp-for="AdressTwo" class="form-label">Address Two</label>
+                    <input asp-for="AdressTwo" type="text" class="form-control" id="AdressTwo" value="@Model.AdressTwo" />
+                    <span asp-validation-for="AdressTwo" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-md-6">
+                    <label asp-for="City" class="form-label">City</label>
+                    <input asp-for="City" type="text"  class="form-control" id="City" value="@Model.City" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="col-12 col-md-4">
+                    <label asp-for="State">State</label>
+                    <select asp-for="State" asp-items="ViewBag.StatesList" class="form-control"></select>
+                    <span asp-validation-for="State"></span>
+                </div>
+                <div class="col-12 col-md-2">
+                    <label asp-for="ZipCode" class="form-label">Zip</label>
+                    <input asp-for="ZipCode" type="text"  class="form-control" id="ZipCode" value="@Model.ZipCode" />
+                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Birthday" class="control-label">Birthday</label>
+                    <input asp-for="Birthday" class="form-control" />
+                    <span asp-validation-for="Birthday" class="text-danger"></span>
+                </div>
+                <div>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <div class="form-check form-switch form-check-inline">
+                            <input type="checkbox" class="form-control" id="Birthday" value="@category.Id" />
+                            <label class="form-check-label" for="CategoryList">@category.Name</label>
+                        </div>
+                    }
+                </div>
+                <div class="col-12 mt-2">
+                    <input type="submit" value="Save" class="btn btn-primary"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

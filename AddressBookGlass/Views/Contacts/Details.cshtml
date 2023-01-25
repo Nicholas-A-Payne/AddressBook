@@ -1,0 +1,73 @@
+﻿@model AddressBookGlass.Models.Contact
+@using AddressBookGlass.Services.Interfaces
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h1>Contact</h1>
+
+    <!--Address Card-->
+    <div class="glass-np-style darkGlass p-2">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="row" gy-2 >
+                    <div class="col-12 col-md-6" >
+                        <label for="Firstname" class="form-label" >First Name</label>
+                        <input type="text" readonly class="form-control" id="FirstName" value="@Model.FirstName" />
+                    </div>
+                    <div class="col-12 col-md-6" >
+                        <label for="Lasttname" class="form-label" >Last Name</label>
+                        <input type="text" readonly class="form-control" id="LastName" value="@Model.LastName" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="Email" class="form-label" >Email</label>
+                        <input type="email" readonly class="form-control" id="Email" value="@Model.Email" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="PhoneNumber" class="form-label" >Phone Number</label>
+                        <input type="tel" readonly class="form-control" id="PhoneNumber" value="@Model.PhoneNumber" />
+                    </div>
+                    <div class="col-12 ">
+                        <label for="AddressOne" class="form-label" >Address</label>
+                        <input type="text" readonly class="form-control" id="AddressOne" value="@Model.AddressOne" />
+                    </div>
+                    <div class="col-12 ">
+                        <label for="AdressTwo" class="form-label" >Address Two</label>
+                        <input type="text" readonly class="form-control" id="AdressTwo" value="@Model.AdressTwo" />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="City" class="form-label" >City</label>
+                        <input type="text" readonly class="form-control" id="City" value="@Model.City" />
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label for="State" class="form-label" >State</label>
+                        <input type="text" readonly class="form-control" id="State" value="@Model.State" />
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <label for="ZipCode" class="form-label" >Zip</label>
+                        <input type="text" readonly class="form-control" id="ZipCode" value="@Model.ZipCode"/>
+                    </div>
+                    <div class="col-12">
+                        <label for="Birthday" class="form-label" >Birthday</label>
+                        <input type="text" readonly class="form-control" id="Birthday" value="@Model.Birthday"/>
+                    </div>
+                    <div>
+                        @foreach(var category in Model.Categories)
+                        {
+                            <div class="form-check form-switch form-check-inline" >
+                                <input type="checkbox" readonly class="form-control" id="Birthday" value="@category.Id"/>
+                                <label class="form-check-label" for="CategoryList">@category.Name</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+    </div>
+</div>

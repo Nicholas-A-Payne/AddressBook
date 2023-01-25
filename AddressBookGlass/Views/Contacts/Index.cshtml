@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AddressBookGlass.Models.Contact>
+@using AddressBookGlass.Services.Interfaces
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="glass-button text-light" asp-action="Create">Create New</a>
+</p>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="mb-3 glass-np-style darkGlass">
+        <div class="row g-0">
+            <div class="col-md-8 d-flex justify-content-start">
+                <div class="card-body">
+                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h5>
+                    <div class="card-text">
+                        Email: @Html.DisplayFor(modelItem => item.Email)
+                    </div>
+                    <div class="card-text">
+                        Email: @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </div>
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="bi-pencil-fill" style="font-size: 1.5rem; color: white;"></i>
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <i class="bi-person-fill" style="font-size: 1.5rem; color: white;"></i>
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="bi-trash-fill" style="font-size: 1.5rem; color: red;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
